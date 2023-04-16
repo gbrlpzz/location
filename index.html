@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Location</title>
+    <style>
+      body {
+        background-color: #333;
+        color: #fff;
+        font-family: "Inconsolata", monospace;
+        font-size: 5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function success(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const location = latitude + ", " + longitude;
+        document.body.innerHTML = location;
+      }
+
+      function error() {
+        document.body.innerHTML = "An error occurred when retrieving your location.";
+      }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+      } else {
+        document.body.innerHTML = "Geolocation is not supported by your browser.";
+      }
+    </script>
+  </body>
+</html>
